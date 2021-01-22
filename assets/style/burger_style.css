@@ -1,0 +1,23 @@
+.is-4 {
+  margin: 3px;
+}
+
+.column > .scrollable {
+  border: 1px dotted green;
+}
+
+.scrollable {
+  overflow-y: auto;
+  height: 340px;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 8px;
+  border: 6px solid white;
+}
