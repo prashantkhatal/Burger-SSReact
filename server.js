@@ -6,6 +6,9 @@ import App from './src/components/App'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
+const PORT = process.env.PORT || 3000;
+process.env.defaultDatabase = 'postgres';
+
 const app = express()
 
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +20,10 @@ app.use('/build', express.static(path.resolve(__dirname, 'build')));
 // hide powered by express
 app.disable('x-powered-by');
 // start the server
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, function() {
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
+});
 
 // import routes
 const routes = require("./burger-api/controllers/burgers_controller");

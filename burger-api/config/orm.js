@@ -1,4 +1,9 @@
-const connection = require("./connection");
+let connection;
+if(process.env.defaultDatabase == 'mysql') {
+  connection = require("./connection");
+} else {
+  connection = require("./connection_postgres");
+}
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.
@@ -9,7 +14,7 @@ function printQuestionMarks(num) {
   var arr = [];
 
   for (var i = 0; i < num; i++) {
-    arr.push("?");
+    arr.push(process.env.defaultDatabase == 'mysql' ? '?' : `$${i+1}`);
   }
 
   return arr.toString();
@@ -37,17 +42,18 @@ function objToSql(ob) {
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
-  
+
+const getResult = (result) => process.env.defaultDatabase !== 'mysql' ? result.rows : result;
 
 let orm = {
     // selectAll()
     selectAll: function(table,callback) {
-        let query = "SELECT * FROM ??"
-        connection.query(query,[table], (error, result) => {
+        let query = `SELECT * FROM ${table}`
+        connection.query(query,[], (error, result) => {
             if (error) {
                 throw error;
             }
-            callback(result);
+            callback(getResult(result));
         })
    
     },
