@@ -1,11 +1,18 @@
 const { Client } = require('pg');
 
+// const client = new Client({
+//     user: 'jerygmcwdjiupd',
+//     host: 'ec2-18-205-122-145.compute-1.amazonaws.com',
+//     database: 'dfiqoom5cl5r9d',
+//     password: '061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648',
+//     port: 5432,
+// });
+
 const client = new Client({
-    user: 'jerygmcwdjiupd',
-    host: 'ec2-18-205-122-145.compute-1.amazonaws.com',
-    database: 'dfiqoom5cl5r9d',
-    password: '061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648',
-    port: 5432,
+  connectionString: 'postgres://jerygmcwdjiupd:061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648@ec2-18-205-122-145.compute-1.amazonaws.com:5432/dfiqoom5cl5r9d', // <--- not defined without .env file definition
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 
