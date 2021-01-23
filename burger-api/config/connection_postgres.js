@@ -9,7 +9,7 @@ const { Client } = require('pg');
 // });
 
 const client = new Client({
-  connectionString: 'postgres://jerygmcwdjiupd:061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648@ec2-18-205-122-145.compute-1.amazonaws.com:5432/dfiqoom5cl5r9d', // <--- not defined without .env file definition
+  connectionString: process.env.postgreDatabaseURI,
   ssl: {
     rejectUnauthorized: false,
   },

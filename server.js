@@ -7,6 +7,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 
 const PORT = process.env.PORT || 3000;
+process.env.postgreDatabaseURI = 'postgres://jerygmcwdjiupd:061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648@ec2-18-205-122-145.compute-1.amazonaws.com:5432/dfiqoom5cl5r9d';
 process.env.defaultDatabase = 'postgres';
 
 const app = express()
@@ -30,13 +31,13 @@ const routes = require("./burger-api/controllers/burgers_controller");
 app.use(routes);
 
 // server rendered home page
-app.get('/', (req, res) => {
-  // const { preloadedState, content}  = ssr(initialState);
-  const content = renderToString(<App />);
-  const response = template("Burger HW 13", content)
-  res.setHeader('Cache-Control', 'assets, max-age=604800')
-  res.send(response);
-});
+// app.get('/', (req, res) => {
+//   // const { preloadedState, content}  = ssr(initialState);
+//   const content = renderToString(<App />);
+//   const response = template("Burger HW 13", content)
+//   res.setHeader('Cache-Control', 'assets, max-age=604800')
+//   res.send(response);
+// });
 
 // Pure client side rendered page
 app.get(['/client', "*"], (req, res) => {
