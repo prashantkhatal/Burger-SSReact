@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
  *add these in local env file and uncomment below lines while running on local 
  * and change process.env.defaultDatabase = 'mysql' if using mysql database
  */
-// process.env.DATABASE_URL = 'postgres://jerygmcwdjiupd:061a3b55e27000121ad2d8bce9bebb950c75d5b9598e2dcd2516bff882d97648@ec2-18-205-122-145.compute-1.amazonaws.com:5432/dfiqoom5cl5r9d';
+// process.env.DATABASE_URL = 'databaseURI here';
 // process.env.defaultDatabase = 'mysql';
 
 const app = express()

@@ -17,3 +17,12 @@ CREATE TABLE burgers (
     devoured BOOLEAN DEFAULT FALSE,
     PRIMARY KEY(id)
 );
+
+
+
+/* For Postgres only */
+CREATE TABLE burgers (
+	id SERIAL PRIMARY KEY NOT NULL,
+	burger_name VARCHAR ( 50 ),
+	devoured BOOLEAN DEFAULT FALSE
+);
